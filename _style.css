@@ -253,6 +253,13 @@ nav .logo {
   align-items: center;
 }
 
+.nav-links a {
+  text-decoration: none;
+}
+
+.nav-links a:visited {
+  color: var(--neutral-600);
+}
 .nav-links ul {
   display: flex;
   justify-content: center;
@@ -314,6 +321,7 @@ button:focus {
 /* ! HERO */
 
 .hero {
+  position: relative;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -324,6 +332,13 @@ button:focus {
   padding: 2rem;
 
   padding-bottom: 96px;
+}
+
+.hero-squiggle {
+  width: 130%;
+  top: 24%;
+  z-index: -1;
+  position: absolute;
 }
 
 .hero-info {
@@ -593,6 +608,7 @@ footer {
   padding: 2rem;
 
   padding-bottom: 96px;
+  border-bottom: 1px solid var(--neutral-300);
 }
 
 .about-hero-info {
@@ -644,6 +660,7 @@ footer {
   max-width: 1192px;
   padding: 96px 2rem;
   gap: 64px;
+  border-bottom: 1px solid var(--neutral-300);
 }
 
 .about-info-1 h3,
@@ -757,6 +774,13 @@ footer {
     padding-top: 48px;
 
     padding-bottom: 96px;
+  }
+
+  .hero-squiggle {
+    width: 130%;
+    top: 40%;
+    z-index: -1;
+    position: absolute;
   }
 
   .hero-info {
@@ -935,7 +959,7 @@ footer {
     border-radius: 16px;
     margin-left: 32px;
     margin-right: 32px;
-    margin-bottom: 96px;
+    /* margin-bottom: 96px; */
   }
 
   .info-3-info {

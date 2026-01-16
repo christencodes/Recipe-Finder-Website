@@ -735,13 +735,12 @@ footer {
 /*? RECIPES PAGE------------------------------------- */
 .recipe-card-grid {
   margin-top: 1rem;
-  width: 1440px;
+  margin: 0 auto;
+  max-width: 1192px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   gap: 32px;
-  padding: 0px 124px;
-
   .recipe-card {
     padding: 0.5rem;
     background-color: var(--neutral-0);
@@ -773,35 +772,54 @@ footer {
 
 /*? Filters */
 .recipe-filters {
-  #clear {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 1rem 0;
+  max-width: 1192px;
+  align-items: stretch;
+
+  /** CHILDREN */
+  .clear {
     border: 1px solid transparent;
     border-radius: 8px;
     padding: 0.3rem;
   }
 
-  .max-prep-time-item {
+  .clear:hover {
+    border: 1px solid orange;
+    transition: border 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .max-cookandprep-container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .max-prep-time-container,
+  .max-cook-time-container {
+    position: relative;
+  }
+
+  .max-prep-time-item,
+  .max-cook-time-item {
     border-radius: 8px;
     padding: 0.3rem;
     border: 1px solid transparent;
   }
 
-  .max-prep-time-item:hover {
+  .max-prep-time-item:hover,
+  .max-cook-time-item:hover {
     border: 1px solid var(--orange-500);
     transition: border 0.2s ease-in-out;
     cursor: pointer;
   }
 
-  #clear:hover {
-    border: 1px solid orange;
-    transition: border 0.3s ease-in-out;
-    cursor: pointer;
-  }
-  border: 1px solid blue;
-  padding: 1rem;
-
   button {
     width: 181px;
-    height: 47px;
+    height: 100%;
     border-radius: 10px;
     border: 1px solid var(--neutral-300);
     background-color: var(--neutral-0);
@@ -813,7 +831,8 @@ footer {
     transition: background-color 0.5s ease-in-out;
   }
 
-  .max-prep-time-options {
+  .max-prep-time-options,
+  .max-cook-time-options {
     position: absolute;
     width: 240px;
     margin-top: 8px;
@@ -826,7 +845,33 @@ footer {
     padding: 1rem;
     border-radius: 8px;
   }
+
+  .search-container {
+    position: relative;
+    border: 1px solid blue;
+
+    img {
+      position: absolute;
+      top: 25%;
+      left: 1rem;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  input[type="search"] {
+    min-width: 310px;
+    min-height: 47px;
+    border: 1px solid red;
+    padding-left: 2.5rem;
+    appearance: none;
+    outline: none;
+    border: 1px solid var(--neutral-300);
+    border-radius: 10px;
+    text-align: left;
+  }
 }
+
 /** MEDIA QUERIES------------------------------ */
 /* ! 768px */
 @media (width <= 768px) {

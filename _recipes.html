@@ -58,21 +58,60 @@
         </section>
         <!--? Recipes Selections Dropdowns -->
         <div class="recipe-filters">
-          <button id="max-prep-time">Max Prep Time</button>
-          <div class="max-prep-time-options text-preset-7">
-            <div class="max-prep-time-item">
-              <input type="radio" name="5minutes" value="5" />
-              <label for="5minutes">5 minutes</label>
+          <div class="max-cookandprep-container">
+            <!-- * MAX PREP TIME -->
+            <div class="max-prep-time-container">
+              <button id="max-prep-time">Max Prep Time</button>
+              <div class="hide-me max-prep-time-options text-preset-7">
+                <div class="max-prep-time-item">
+                  <input type="radio" name="5minutes" value="5" />
+                  <label for="5minutes">5 minutes</label>
+                </div>
+                <div class="max-prep-time-item">
+                  <input type="radio" name="10minutes" value="10" />
+                  <label for="10minutes">10 minutes</label>
+                </div>
+                <div class="max-prep-time-item">
+                  <input type="radio" name="15minutes" value="15" />
+                  <label for="15minutes">15 minutes</label>
+                </div>
+                <h3 class="clear">Clear</h3>
+              </div>
             </div>
-            <div class="max-prep-time-item">
-              <input type="radio" name="10minutes" value="10" />
-              <label for="10minutes">10 minutes</label>
+
+            <!-- * MAX COOK TIME -->
+            <div class="max-cook-time-container">
+              <button id="max-cook-time">Max Cook Time</button>
+              <div class="hide-me max-cook-time-options text-preset-7">
+                <div class="max-cook-time-item">
+                  <input type="radio" name="0minutes" value="0" />
+                  <label for="0minutes">0 minutes</label>
+                </div>
+                <div class="max-cook-time-item">
+                  <input type="radio" name="5minutes" value="5" />
+                  <label for="5minutes">5 minutes</label>
+                </div>
+                <div class="max-cook-time-item">
+                  <input type="radio" name="10minutes" value="10" />
+                  <label for="10minutes">10 minutes</label>
+                </div>
+                <div class="max-cook-time-item">
+                  <input type="radio" name="15minutes" value="15" />
+                  <label for="15minutes">15 minutes</label>
+                </div>
+                <h3 class="clear">Clear</h3>
+              </div>
             </div>
-            <div class="max-prep-time-item">
-              <input type="radio" name="15minutes" value="15" />
-              <label for="15minutes">15 minutes</label>
-            </div>
-            <h3 class="text-preset-9 clear" id="clear">Clear</h3>
+          </div>
+          <!--! Search -->
+          <div class="search-container text-preset-7">
+            <img src="/assets/images/icon-search.svg" alt="" />
+            <input
+              type="search"
+              name="search"
+              id="search"
+              placeholder="Search by name or ingredient..."
+            />
           </div>
         </div>
         <!--? Recipes Grid -->
@@ -126,6 +165,6 @@
         </div>
       </footer>
     </div>
-    <script src="_script.js"></script>
+    <script type="module" src="_script.js"></script>
   </body>
 </html>

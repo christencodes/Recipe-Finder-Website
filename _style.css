@@ -741,24 +741,47 @@ footer {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   gap: 32px;
+
   .recipe-card {
     padding: 0.5rem;
     background-color: var(--neutral-0);
-    height: 500px;
+    height: 554px;
     border-radius: 10px;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     gap: 1rem;
 
     .recipe-card-image-container {
       overflow: hidden;
-      border-radius: 1rem;
+      border-radius: 10px;
 
-      img {
+      .recipe-img {
+        width: 100%;
         height: 100%;
+      }
+    }
+
+    .recipe-card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding: 0.4rem;
+
+      * {
+        /* border: 1px solid blue; */
+      }
+
+      .cook-information {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.3rem;
+        /* border: 1px solid blue; */
+
+        .cook-information-item {
+          display: flex;
+        }
       }
     }
 
@@ -766,6 +789,10 @@ footer {
       appearance: none;
       border: none;
       width: 100%;
+      height: 48px;
+      color: var(--neutral-0);
+      background-color: var(--neutral-900);
+      border-radius: 2rem;
     }
   }
 }

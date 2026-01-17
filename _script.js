@@ -15,10 +15,10 @@ const maxPrepTimeOptions = document.querySelector(".max-prep-time-options");
 const maxCookTime = document.getElementById("max-cook-time");
 const maxCookTimeOptions = document.querySelector(".max-cook-time-options");
 const radioButtonsMaxPrepTime = maxPrepTimeOptions.querySelectorAll(
-  'input[type="radio"]'
+  'input[type="radio"]',
 );
 const radioButtonsMaxCookTime = maxCookTimeOptions.querySelectorAll(
-  'input[type="radio"]'
+  'input[type="radio"]',
 );
 const searchInput = document.getElementById("search");
 const clear = document.querySelectorAll(".clear");
@@ -32,6 +32,8 @@ window.addEventListener("resize", (e) => {
 
 searchInput.addEventListener("input", (e) => {
   console.log("clickity clack...");
+  //!Searches through name and ingredient as we input characters
+  //need a function
 });
 
 maxPrepTime.addEventListener("click", (e) => {
@@ -106,12 +108,95 @@ async function getFoodData() {
 }
 
 const data = await getFoodData();
-console.log(typeof data);
+// console.log(data);
+
+// data.forEach((e) => {
+//   console.log(e);
+// });
+// console.log(typeof data);
 
 getFoodData().then((e) => {
   //have to do everything IN THIS THING!
 });
 
+//? Card Template
+
+//Reference to the card container
+//Reference to the card template
+const cardContainer = document.getElementById("recipe-card-grid");
+const cardTemplate = document.getElementById("card-template");
+
+function cardBuilder(recipeInfo) {
+  const recipeCardInstance = cardTemplate.content.cloneNode(true);
+  //card-image
+  recipeCardImage = recipeCardInstance.getElementById("recipe-image");
+  recipeCardImage.src =
+    screen.width > 1400 ? recipeInfo.image.large : recipeInfo.image.small;
+
+  //card-title
+  recipeCardTitle = recipeCardInstance.getElementById("title");
+  recipeCardTitle.textContent = recipeInfo.title;
+  // recipeCardTitle = recipeCardInstance
+  recipeCardOverview = recipeCardInstance.getElementById("overview");
+  recipeCardOverview.textContent = recipeInfo.overview;
+  //overview
+  recipeCardServings = recipeCardInstance.getElementById("servings");
+  recipeCardServings.textContent += ` ${recipeInfo.servings}`;
+  //servings
+  recipeCardPrepTime = recipeCardInstance.getElementById("prep-time");
+  recipeCardPrepTime.textContent += ` ${recipeInfo.prepMinutes}`;
+  //prep time
+  recipeCardCookTime = recipeCardInstance.getElementById("cook-time");
+  recipeCardCookTime.textContent += ` ${recipeInfo.cookMinutes}`;
+  //cook time
+
+  //append the card to the container
+  cardContainer.appendChild(recipeCardInstance);
+}
+
+function searchData(input) {
+  //delete the current cards
+  data.forEach((recipe) => {
+    // console.log(recipe.title);
+    // console.log(recipe.ingredients);
+    let title = recipe.title.toLowerCase();
+    let ingredients = recipe.ingredients.map((element) =>
+      element.toLowerCase(),
+    );
+
+    // console.log(ingredients);
+
+    //
+    if (
+      title.includes(input.toLowerCase()) ||
+      ingredients.some((i) => i.includes(input.toLowerCase()))
+    ) {
+      console.log(recipe);
+    }
+  });
+}
+
+searchData("tomato");
+console.log(data);
+
+// gameData
+//   .filter((e) => e.def > 900)
+//   .forEach((character) => {
+//     // console.log(character);
+//     // console.log(character.name);
+//     instance of
+//     const cardInstance = cardTemplate.content.cloneNode(true);
+
+//     const nameInstance = cardInstance.querySelector(".card-title");
+//     const atkInstance = cardInstance.querySelector(".atk");
+//     const defInstance = cardInstance.querySelector(".def");
+
+//     nameInstance.textContent = character.name;
+//     atkInstance.textContent = character.atk;
+//     defInstance.textContent = character.def;
+
+//     cardContainer.appendChild(cardInstance);
+//   });
 /* ?
 1. Image - based on the screen width
 2. Title - (not the slug)

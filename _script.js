@@ -29,10 +29,12 @@ window.addEventListener("resize", (e) => {
   // console.log(window.screen.width);
   tabletAdjust();
 });
-
+const cardContainer = document.getElementById("recipe-card-grid");
 searchInput.addEventListener("input", (e) => {
+  cardContainer.innerHTML = "";
   console.log("clickity clack...");
   //!Searches through name and ingredient as we input characters
+  searchData(searchInput.value);
   //need a function
 });
 
@@ -123,30 +125,31 @@ getFoodData().then((e) => {
 
 //Reference to the card container
 //Reference to the card template
-const cardContainer = document.getElementById("recipe-card-grid");
+
 const cardTemplate = document.getElementById("card-template");
+console.log(cardTemplate);
 
 function cardBuilder(recipeInfo) {
   const recipeCardInstance = cardTemplate.content.cloneNode(true);
   //card-image
-  recipeCardImage = recipeCardInstance.getElementById("recipe-image");
+  const recipeCardImage = recipeCardInstance.getElementById("recipe-img");
   recipeCardImage.src =
     screen.width > 1400 ? recipeInfo.image.large : recipeInfo.image.small;
 
   //card-title
-  recipeCardTitle = recipeCardInstance.getElementById("title");
+  const recipeCardTitle = recipeCardInstance.getElementById("title");
   recipeCardTitle.textContent = recipeInfo.title;
   // recipeCardTitle = recipeCardInstance
-  recipeCardOverview = recipeCardInstance.getElementById("overview");
+  const recipeCardOverview = recipeCardInstance.getElementById("overview");
   recipeCardOverview.textContent = recipeInfo.overview;
   //overview
-  recipeCardServings = recipeCardInstance.getElementById("servings");
+  const recipeCardServings = recipeCardInstance.getElementById("servings");
   recipeCardServings.textContent += ` ${recipeInfo.servings}`;
   //servings
-  recipeCardPrepTime = recipeCardInstance.getElementById("prep-time");
+  const recipeCardPrepTime = recipeCardInstance.getElementById("prep-time");
   recipeCardPrepTime.textContent += ` ${recipeInfo.prepMinutes}`;
   //prep time
-  recipeCardCookTime = recipeCardInstance.getElementById("cook-time");
+  const recipeCardCookTime = recipeCardInstance.getElementById("cook-time");
   recipeCardCookTime.textContent += ` ${recipeInfo.cookMinutes}`;
   //cook time
 
@@ -171,13 +174,13 @@ function searchData(input) {
       title.includes(input.toLowerCase()) ||
       ingredients.some((i) => i.includes(input.toLowerCase()))
     ) {
+      cardBuilder(recipe);
       console.log(recipe);
     }
   });
 }
 
-searchData("tomato");
-console.log(data);
+// searchData("salt");
 
 // gameData
 //   .filter((e) => e.def > 900)

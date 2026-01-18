@@ -20,8 +20,35 @@ const radioButtonsMaxPrepTime = maxPrepTimeOptions.querySelectorAll(
 const radioButtonsMaxCookTime = maxCookTimeOptions.querySelectorAll(
   'input[type="radio"]',
 );
+const cardContainer = document.getElementById("recipe-card-grid");
 const searchInput = document.getElementById("search");
 const clear = document.querySelectorAll(".clear");
+
+//*Testing
+
+maxPrepTimeOptions.addEventListener("input", (e) => {
+  console.log(e.target.value);
+  //Needs to filter card container
+});
+
+//gather all cards in the card container
+//set card container inner html to nothing
+//filter through the cards
+//populate card container with the new cards
+
+function filterCards(value, typeTime) {
+  if (typeTime === "prep") {
+    const gatheredCards = cardContainer.children;
+  }
+}
+
+for (const element of cardContainer.children) {
+  console.log(element);
+}
+
+// console.log(radioButtonsMaxPrepTime);
+
+//*--------------------------------------
 
 //* EVENT LISTENERS
 window.addEventListener("resize", (e) => {
@@ -29,10 +56,11 @@ window.addEventListener("resize", (e) => {
   // console.log(window.screen.width);
   tabletAdjust();
 });
-const cardContainer = document.getElementById("recipe-card-grid");
+
 searchInput.addEventListener("input", (e) => {
+  //remove current cards
   cardContainer.innerHTML = "";
-  console.log("clickity clack...");
+  // console.log("clickity clack...");
   //!Searches through name and ingredient as we input characters
   searchData(searchInput.value);
   //need a function
@@ -117,9 +145,9 @@ const data = await getFoodData();
 // });
 // console.log(typeof data);
 
-getFoodData().then((e) => {
-  //have to do everything IN THIS THING!
-});
+// getFoodData().then((e) => {
+//   //have to do everything IN THIS THING!
+// });
 
 //? Card Template
 
@@ -127,7 +155,7 @@ getFoodData().then((e) => {
 //Reference to the card template
 
 const cardTemplate = document.getElementById("card-template");
-console.log(cardTemplate);
+// console.log(cardTemplate);
 
 function cardBuilder(recipeInfo) {
   const recipeCardInstance = cardTemplate.content.cloneNode(true);
@@ -157,6 +185,14 @@ function cardBuilder(recipeInfo) {
   cardContainer.appendChild(recipeCardInstance);
 }
 
+//shows all recipes immediately
+(function showAllrecipes() {
+  //show all recipes when pages first loads
+  data.forEach((recipe) => {
+    cardBuilder(recipe);
+  });
+})();
+
 function searchData(input) {
   //delete the current cards
   data.forEach((recipe) => {
@@ -175,7 +211,7 @@ function searchData(input) {
       ingredients.some((i) => i.includes(input.toLowerCase()))
     ) {
       cardBuilder(recipe);
-      console.log(recipe);
+      // console.log(recipe);
     }
   });
 }

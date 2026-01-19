@@ -14,6 +14,7 @@ const maxPrepTime = document.getElementById("max-prep-time");
 const maxPrepTimeOptions = document.querySelector(".max-prep-time-options");
 const maxCookTime = document.getElementById("max-cook-time");
 const maxCookTimeOptions = document.querySelector(".max-cook-time-options");
+
 const radioButtonsMaxPrepTime = maxPrepTimeOptions.querySelectorAll(
   'input[type="radio"]',
 );
@@ -25,28 +26,7 @@ const searchInput = document.getElementById("search");
 const clear = document.querySelectorAll(".clear");
 
 //*Testing
-
-maxPrepTimeOptions.addEventListener("input", (e) => {
-  console.log(e.target.value);
-  //Needs to filter card container
-});
-
-//gather all cards in the card container
-//set card container inner html to nothing
-//filter through the cards
-//populate card container with the new cards
-
-function filterCards(value, typeTime) {
-  if (typeTime === "prep") {
-    const gatheredCards = cardContainer.children;
-  }
-}
-
-for (const element of cardContainer.children) {
-  console.log(element);
-}
-
-// console.log(radioButtonsMaxPrepTime);
+console.log(!searchInput.value);
 
 //*--------------------------------------
 
@@ -62,8 +42,18 @@ searchInput.addEventListener("input", (e) => {
   cardContainer.innerHTML = "";
   // console.log("clickity clack...");
   //!Searches through name and ingredient as we input characters
-  searchData(searchInput.value);
+  searchData();
   //need a function
+});
+
+maxCookTimeOptions.addEventListener("input", (e) => {
+  cardContainer.innerHTML = "";
+  searchData();
+});
+
+maxPrepTimeOptions.addEventListener("input", (e) => {
+  cardContainer.innerHTML = "";
+  searchData();
 });
 
 maxPrepTime.addEventListener("click", (e) => {
@@ -116,11 +106,6 @@ function clearChecked(arr) {
   });
 }
 
-function populateCards() {
-  //Ingredients
-  // Max Prep Time + Max Cook Time + Search
-}
-
 //? JSON Data
 
 async function getFoodData() {
@@ -138,16 +123,6 @@ async function getFoodData() {
 }
 
 const data = await getFoodData();
-// console.log(data);
-
-// data.forEach((e) => {
-//   console.log(e);
-// });
-// console.log(typeof data);
-
-// getFoodData().then((e) => {
-//   //have to do everything IN THIS THING!
-// });
 
 //? Card Template
 
@@ -161,8 +136,7 @@ function cardBuilder(recipeInfo) {
   const recipeCardInstance = cardTemplate.content.cloneNode(true);
   //card-image
   const recipeCardImage = recipeCardInstance.getElementById("recipe-img");
-  recipeCardImage.src =
-    screen.width > 1400 ? recipeInfo.image.large : recipeInfo.image.small;
+  recipeCardImage.src = recipeInfo.image.large;
 
   //card-title
   const recipeCardTitle = recipeCardInstance.getElementById("title");
@@ -184,8 +158,7 @@ function cardBuilder(recipeInfo) {
   //append the card to the container
   cardContainer.appendChild(recipeCardInstance);
 }
-
-//shows all recipes immediately
+// shows all recipes immediately
 (function showAllrecipes() {
   //show all recipes when pages first loads
   data.forEach((recipe) => {
@@ -193,54 +166,90 @@ function cardBuilder(recipeInfo) {
   });
 })();
 
-function searchData(input) {
-  //delete the current cards
-  data.forEach((recipe) => {
-    // console.log(recipe.title);
-    // console.log(recipe.ingredients);
-    let title = recipe.title.toLowerCase();
-    let ingredients = recipe.ingredients.map((element) =>
-      element.toLowerCase(),
-    );
+function gatherPrepTimes() {
+  let checkedOptionsArr = [];
 
-    // console.log(ingredients);
-
-    //
-    if (
-      title.includes(input.toLowerCase()) ||
-      ingredients.some((i) => i.includes(input.toLowerCase()))
-    ) {
-      cardBuilder(recipe);
-      // console.log(recipe);
+  radioButtonsMaxPrepTime.forEach((radio) => {
+    if (radio.checked) {
+      checkedOptionsArr.push(radio.value);
+    } else {
+      checkedOptionsArr.push(99);
     }
+  });
+
+  return checkedOptionsArr;
+}
+
+function gatherCookTimes() {
+  let checkedOptionsArr = [];
+  radioButtonsMaxCookTime.forEach((radio) => {
+    if (radio.checked) {
+      checkedOptionsArr.push(radio.value);
+    } else {
+      checkedOptionsArr.push(99);
+    }
+  });
+  return checkedOptionsArr;
+}
+
+function gatherSearchInput() {
+  return searchInput.value;
+}
+
+function searchData() {
+  const cookTimes = gatherCookTimes(); //array
+  const prepTimes = gatherPrepTimes(); //array
+  const searchInput = gatherSearchInput(); //string
+
+  //!delete the current cards - remember this
+
+  const currentCards = []; //our array of recipe objects that each step dumps info into
+
+  // * The Search Input Step
+  if (!searchInput) {
+    data.forEach((recipe) => {
+      currentCards.push(recipe);
+    });
+  } else {
+    data.forEach((recipe) => {
+      let title = recipe.title.toLowerCase();
+      let ingredients = recipe.ingredients.map((element) =>
+        element.toLowerCase(),
+      );
+
+      if (
+        title.includes(searchInput.toLowerCase()) ||
+        ingredients.some((i) => i.includes(searchInput.toLowerCase()))
+      ) {
+        // console.log(recipe);
+        currentCards.push(recipe);
+      }
+    });
+  }
+
+  const updatedCookTimes = cookTimes.map((time) => Number(time));
+  const updatedPrepTimes = prepTimes.map((time) => Number(time));
+
+  // * The Cook Time  //* The Prep Time
+
+  const updatedCards = currentCards.filter((card) => {
+    return (
+      updatedCookTimes.includes(card.cookMinutes) ||
+      updatedPrepTimes.includes(card.prepMinutes)
+    );
+  });
+
+  updatedCards.forEach((card) => {
+    cardBuilder(card);
   });
 }
 
 // searchData("salt");
 
-// gameData
-//   .filter((e) => e.def > 900)
-//   .forEach((character) => {
-//     // console.log(character);
-//     // console.log(character.name);
-//     instance of
-//     const cardInstance = cardTemplate.content.cloneNode(true);
-
-//     const nameInstance = cardInstance.querySelector(".card-title");
-//     const atkInstance = cardInstance.querySelector(".atk");
-//     const defInstance = cardInstance.querySelector(".def");
-
-//     nameInstance.textContent = character.name;
-//     atkInstance.textContent = character.atk;
-//     defInstance.textContent = character.def;
-
-//     cardContainer.appendChild(cardInstance);
-//   });
-/* ?
-1. Image - based on the screen width
-2. Title - (not the slug)
-3. Overview
-4. Servings
-5. Prep Minutes
-6. Cook Minutes
-4. */
+// 1. Image - based on the screen width
+// 2. Title - (not the slug)
+// 3. Overview
+// 4. Servings
+// 5. Prep Minutes
+// 6. Cook Minutes
+// 4. */

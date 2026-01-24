@@ -40,7 +40,15 @@ const heroImage = document.getElementById("hero-img");
 
 //? Card Template
 
+const dropdown = document.querySelector(".dropdown");
 // hamburger setup
 hamburgerContainer.addEventListener("click", (e) => {
-  //show dropdown menu
+  console.log("hello");
+  dropdown.classList.toggle("hide-me");
+});
+
+window.addEventListener("resize", (e) => {
+  if (window.screen.width > 768) {
+    dropdown.classList.add("hide-me");
+  }
 });

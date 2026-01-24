@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="_style.css" />
+    <link
+      rel="shortcut icon"
+      href="/assets/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <title>Recipe Finder Website</title>
+  </head>
+  <body class="recipes">
+    <div class="project-container recipe-details">
+      <!--* HEADER -->
+      <header>
+        <nav class="">
+          <img
+            class="nav-logo"
+            src="./assets/images/logo.svg"
+            alt="company logo"
+          />
+          <div class="nav-links">
+            <ul class="text-preset-7">
+              <li><a href="_index.html">Home</a></li>
+              <li><a href="_about.html">About</a></li>
+              <li><a href="_recipes.html">Recipes</a></li>
+            </ul>
+          </div>
+          <button id="nav-button" class="text-preset-5">Browse Recipes</button>
+          <div class="hamburger-container">
+            <img
+              id="hamburger"
+              class="hamburger"
+              src="/assets/images/icon-hamburger-menu.svg"
+              alt="menu icon"
+            />
+          </div>
+        </nav>
+      </header>
+      <!--Recipe Detail Portion - 1192 Max Width  -->
+      <div class="recipe-details-container">
+        <div class="recipe-details-image-container">
+          <img
+            id="recipe-image"
+            src="/assets/images/banana-pancakes-large.webp"
+            alt="recipe image"
+          />
+        </div>
+        <div class="recipe-details-info-container">
+          <div class="recipe-details-title-container text-preset-2">
+            <p id="recipe-title">Mediterranean Chickpea Salad</p>
+          </div>
+          <div class="recipe-details-overview-container text-preset-6">
+            <p id="recipe-overview">xx</p>
+          </div>
+          <div class="recipe-details-times-container text-preset-7">
+            <div>
+              <img src="/assets/images/icon-servings.svg" alt="" />
+              <p id="recipe-servings">Servings</p>
+            </div>
+            <div>
+              <img src="/assets/images/icon-prep-time.svg" alt="" />
+              <p id="recipe-prep-minutes">Prep</p>
+            </div>
+            <div>
+              <img src="/assets/images/icon-cook-time.svg" alt="" />
+              <p id="recipe-cook-minutes">Cook</p>
+            </div>
+          </div>
+          <div class="recipe-details-ingredients-container">
+            <h3 class="text-preset-4">Ingredients:</h3>
+            <ul class="ingredient-list">
+              <!--! Need a UL Builder Function for Ingredients -->
+            </ul>
+          </div>
+          <div class="recipe-details-instructions-container">
+            <h3 class="text-preset-4">Instructions:</h3>
+            <ul class="instruction-list">
+              <!--! Need a UL Builder Function For Recipe Instructions  -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="more-recipes-container">
+        <h3 class="text-preset-3">More Recipes</h3>
+      </div>
+      <div class="recipe-card-grid">
+        <div class="recipe-card">
+          <div class="recipe-card-image-container">
+            <img
+              class="recipe-img"
+              src="./assets/images/mediterranean-chickpea-salad-large.webp"
+              alt=""
+            />
+          </div>
+          <div class="recipe-card-info">
+            <h3 class="title">Mediterranean Chickpea Salad</h3>
+            <p class="overview">
+              A refreshing, protein-packed salad tossed in a lemon-olive oil
+              dressing.
+            </p>
+            <div class="cook-information text-preset-9">
+              <div class="cook-information-item">
+                <img src="/assets/images/icon-servings.svg" alt="" />
+                <p class="servings">Servings: 2</p>
+              </div>
+              <div class="cook-information-item">
+                <img src="/assets/images/icon-prep-time.svg" alt="" />
+                <p class="prep-time">Prep: 10</p>
+              </div>
+              <div class="cook-information-item">
+                <img src="/assets/images/icon-cook-time.svg" alt="" />
+                <p class="cook-time">Cook: 0</p>
+              </div>
+            </div>
+          </div>
+          <button class="recipe-button">
+            <a
+              class="recipe-link"
+              href="http://127.0.0.1:5501/_recipedetails.html?title=Mediterranean+Chickpea+Salad"
+              >View Recipe</a
+            >
+          </button>
+        </div>
+
+        <div class="recipe-card">
+          <div class="recipe-card-image-container">
+            <img
+              class="recipe-img"
+              src="./assets/images/avocado-tomato-wholegrain-toast-large.webp"
+              alt=""
+            />
+          </div>
+          <div class="recipe-card-info">
+            <h3 class="title">Avocado &amp; Tomato Wholegrain Toast</h3>
+            <p class="overview">
+              Creamy avocado spread over toasted wholegrain bread, topped with
+              juicy tomatoes.
+            </p>
+            <div class="cook-information text-preset-9">
+              <div class="cook-information-item">
+                <img src="/assets/images/icon-servings.svg" alt="" />
+                <p class="servings">Servings: 1</p>
+              </div>
+              <div class="cook-information-item">
+                <img src="/assets/images/icon-prep-time.svg" alt="" />
+                <p class="prep-time">Prep: 5</p>
+              </div>
+              <div class="cook-information-item">
+                <img src="/assets/images/icon-cook-time.svg" alt="" />
+                <p class="cook-time">Cook: 5</p>
+              </div>
+            </div>
+          </div>
+          <button class="recipe-button">
+            <a
+              class="recipe-link"
+              href="http://127.0.0.1:5501/_recipedetails.html?title=Avocado+%26+Tomato+Wholegrain+Toast"
+              >View Recipe</a
+            >
+          </button>
+        </div>
+
+        <div class="recipe-card">
+          <div class="recipe-card-image-container">
+            <img
+              class="recipe-img"
+              src="./assets/images/salmon-asparagus-large.webp"
+              alt=""
+            />
+          </div>
+          <div class="recipe-card-info">
+            <h3 class="title">One-Pan Lemon Garlic Salmon with Asparagus</h3>
+            <p class="overview">
+              A 15-minute weeknight dinner of flaky salmon and tender asparagus.
+            </p>
+            <div class="cook-information text-preset-9">
+              <div class="cook-information-item">
+                <img src="/assets/images/icon-servings.svg" alt="" />
+                <p class="servings">Servings: 2</p>
+              </div>
+              <div class="cook-information-item">
+                <img src="/assets/images/icon-prep-time.svg" alt="" />
+                <p class="prep-time">Prep: 5</p>
+              </div>
+              <div class="cook-information-item">
+                <img src="/assets/images/icon-cook-time.svg" alt="" />
+                <p class="cook-time">Cook: 12</p>
+              </div>
+            </div>
+          </div>
+          <button class="recipe-button">
+            <a
+              class="recipe-link"
+              href="http://127.0.0.1:5501/_recipedetails.html?title=One-Pan+Lemon+Garlic+Salmon+with+Asparagus"
+              >View Recipe</a
+            >
+          </button>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-statement">
+          <p class="text-preset-9">Made with 💖 and 🥑</p>
+        </div>
+        <div class="footer-links">
+          <ul>
+            <li>
+              <img src="/assets/images/icon-instagram.svg" alt="instagram" />
+            </li>
+            <li><img src="/assets/images/icon-bluesky.svg" alt="bluesky" /></li>
+            <li><img src="/assets/images/icon-tiktok.svg" alt="tiktok" /></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/_recipedetails.js"></script>
+  </body>
+</html>

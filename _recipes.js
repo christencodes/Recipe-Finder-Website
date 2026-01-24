@@ -1,4 +1,5 @@
 `use strict`;
+
 //*HELPER Variables
 const tablet = 769;
 const mobile = 375;
@@ -24,6 +25,8 @@ const radioButtonsMaxCookTime = maxCookTimeOptions.querySelectorAll(
 const cardContainer = document.getElementById("recipe-card-grid");
 const searchInput = document.getElementById("search");
 const clear = document.querySelectorAll(".clear");
+
+//* Base URL
 
 //*Testing
 console.log(!searchInput.value);
@@ -129,32 +132,38 @@ const data = await getFoodData();
 //Reference to the card container
 //Reference to the card template
 
-const cardTemplate = document.getElementById("card-template");
+const cardTemplate = document.querySelector(".card-template");
 // console.log(cardTemplate);
 
 function cardBuilder(recipeInfo) {
+  let url = new URL("http://127.0.0.1:5501/_recipedetails.html");
   const recipeCardInstance = cardTemplate.content.cloneNode(true);
   //card-image
-  const recipeCardImage = recipeCardInstance.getElementById("recipe-img");
+  const recipeCardImage = recipeCardInstance.querySelector(".recipe-img");
   recipeCardImage.src = recipeInfo.image.large;
 
   //card-title
-  const recipeCardTitle = recipeCardInstance.getElementById("title");
+  const recipeCardTitle = recipeCardInstance.querySelector(".title");
   recipeCardTitle.textContent = recipeInfo.title;
+  //! URL SEARCH PARAMS
+  url.searchParams.set("title", recipeInfo.title);
   // recipeCardTitle = recipeCardInstance
-  const recipeCardOverview = recipeCardInstance.getElementById("overview");
+  const recipeCardOverview = recipeCardInstance.querySelector(".overview");
   recipeCardOverview.textContent = recipeInfo.overview;
   //overview
-  const recipeCardServings = recipeCardInstance.getElementById("servings");
+  const recipeCardServings = recipeCardInstance.querySelector(".servings");
   recipeCardServings.textContent += ` ${recipeInfo.servings}`;
   //servings
-  const recipeCardPrepTime = recipeCardInstance.getElementById("prep-time");
+  const recipeCardPrepTime = recipeCardInstance.querySelector(".prep-time");
   recipeCardPrepTime.textContent += ` ${recipeInfo.prepMinutes}`;
   //prep time
-  const recipeCardCookTime = recipeCardInstance.getElementById("cook-time");
+  const recipeCardCookTime = recipeCardInstance.querySelector(".cook-time");
   recipeCardCookTime.textContent += ` ${recipeInfo.cookMinutes}`;
   //cook time
+  const recipeCardButton = recipeCardInstance.querySelector(".recipe-button");
+  recipeCardButton.querySelector(".recipe-link").href = url;
 
+  recipeCardButton.addEventListener("click", (e) => {});
   //append the card to the container
   cardContainer.appendChild(recipeCardInstance);
 }

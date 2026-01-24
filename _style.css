@@ -901,6 +901,109 @@ footer {
   }
 }
 
+/*?---------------------- RECIPE DETAILS ----------------------------- */
+
+.recipe-details {
+  .recipe-card-grid {
+    /* border: 1px solid red; */
+    padding-top: 32px;
+    padding-bottom: 96px;
+    border-bottom: 1px solid var(--neutral-300);
+  }
+}
+.more-recipes-container {
+  margin: 0 auto;
+  margin-top: 64px;
+  max-width: 1192px;
+  color: var(--neutral-900);
+}
+.recipe-card-grid-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 1192px;
+}
+.recipe-details-container {
+  margin: 0 auto;
+  max-width: 1192px;
+  padding: 0.5rem;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--neutral-300);
+
+  display: flex;
+  gap: 40px;
+
+  /** CHILDREN */
+  .recipe-details-image-container {
+    height: fit-content;
+    overflow: hidden;
+    border-radius: 16px;
+
+    img {
+      width: 580px;
+      height: 580px;
+    }
+  }
+
+  .recipe-details-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: self-start;
+    gap: 20px;
+  }
+
+  .recipe-details-title-container {
+    width: 100%;
+    color: var(--neutral-900);
+    /* font-size: 20px; */
+  }
+
+  .recipe-details-overview-container {
+    color: var(--neutral-900);
+  }
+
+  .recipe-details-times-container {
+    display: flex;
+    gap: 1rem;
+  }
+  .recipe-details-times-container > * {
+    display: flex;
+    gap: 0.3rem;
+  }
+  .recipe-details-ingredients-container h3,
+  .recipe-details-instructions-container h3 {
+    margin-bottom: 1rem;
+    color: var(--neutral-900);
+  }
+
+  .ingredient-list,
+  .instruction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ingredient-item,
+  .instruction-item {
+    display: flex;
+    gap: 0.3rem;
+    color: var(--neutral-600);
+  }
+}
+
+.recipe-details-container > * {
+  width: 50%;
+}
+
+.random-recipes {
+  background-color: blue;
+  border: 1px solid red;
+  width: 1192px;
+  height: fit-content;
+}
+
+/*? ------------------------------------------------------------------- */
+
 /** MEDIA QUERIES------------------------------ */
 /* ! 768px */
 @media (width <= 768px) {
@@ -1448,6 +1551,106 @@ footer {
       }
     }
   }
+
+  .more-recipes-container {
+    margin: 0 auto;
+    margin-top: 64px;
+    max-width: 1192px;
+    color: var(--neutral-900);
+    padding: 0 1.3rem;
+  }
+  .recipe-details {
+    .recipe-card-grid {
+      /* border: 1px solid red; */
+      padding-top: 64px;
+      padding-bottom: 96px;
+      border-bottom: 1px solid var(--neutral-300);
+    }
+  }
+
+  .recipe-details-container {
+    margin: 0 auto;
+    max-width: 1192px;
+    padding: 1.4rem;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--neutral-300);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    /** CHILDREN */
+    .recipe-details-image-container {
+      width: 100%;
+      height: fit-content;
+      overflow: hidden;
+      border-radius: 16px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .recipe-details-info-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: self-start;
+      width: 100%;
+      gap: 20px;
+    }
+
+    .recipe-details-title-container {
+      width: 100%;
+      color: var(--neutral-900);
+      /* font-size: 20px; */
+    }
+
+    .recipe-details-overview-container {
+      color: var(--neutral-900);
+    }
+
+    .recipe-details-times-container {
+      display: flex;
+      gap: 1rem;
+    }
+    .recipe-details-times-container > * {
+      display: flex;
+      gap: 0.3rem;
+    }
+    .recipe-details-ingredients-container h3,
+    .recipe-details-instructions-container h3 {
+      margin-bottom: 1rem;
+      color: var(--neutral-900);
+    }
+
+    .ingredient-list,
+    .instruction-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .ingredient-item,
+    .instruction-item {
+      display: flex;
+      gap: 0.3rem;
+      color: var(--neutral-600);
+    }
+  }
+
+  .recipe-details-container > * {
+    width: 50%;
+  }
+
+  .random-recipes {
+    background-color: blue;
+    border: 1px solid red;
+    width: 1192px;
+    height: fit-content;
+  }
 }
 
 @media (width <= 375px) {
@@ -1457,7 +1660,46 @@ footer {
     padding: 16px;
     margin-bottom: 0;
 
-    /*? NAV STUFF HERE */
+    /*? Dropdown*/
+    .dropdown {
+      border: 1px solid red;
+      position: absolute;
+
+      min-width: 350px;
+      left: 12.5px;
+      top: 69px;
+      z-index: 99;
+      background-color: var(--neutral-0);
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--neutral-300);
+
+      ul {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      li {
+        height: 47px;
+
+        display: flex;
+        align-items: center;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      button {
+        width: 100%;
+        height: 47px;
+        color: var(--neutral-0);
+        border: none;
+        border-radius: 10px;
+        background-color: var(--neutral-900);
+      }
+    }
   }
 
   /** HERO-------------------------------------------- */
@@ -2083,5 +2325,48 @@ footer {
       }
     }
   }
+
+  .more-recipes-container {
+    margin: 0 auto;
+    margin-top: 32px;
+    max-width: 1192px;
+    color: var(--neutral-900);
+    padding: 0 1.3rem;
+  }
+  .recipe-details {
+    .recipe-card-grid {
+      /* border: 1px solid red; */
+      padding-top: 32px;
+      padding-bottom: 45px;
+      border-bottom: 1px solid var(--neutral-300);
+    }
+  }
+
+  .recipe-details-times-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
 }
 /** UTILITIES------------------------------ */
+
+a:hover {
+  color: var(--neutral-600);
+}
+a,
+a:visited,
+a:active {
+  color: var(--neutral-900);
+}
+
+button a,
+button a:visited,
+button a:active {
+  color: var(--neutral-300);
+}
+
+a,
+button {
+  cursor: pointer;
+  text-decoration: none;
+}

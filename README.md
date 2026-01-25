@@ -14,5 +14,5 @@ Users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Repo](https://github.com/christencodes/Recipe-Finder-Website)
+- Live Site URL: [Live](https://christencodes.github.io/Recipe-Finder-Website/index.html)

@@ -328,6 +328,15 @@ nav {
     height: 20px;
   }
 }
+
+main {
+  .hero-squiggle {
+    position: absolute;
+    top: 400px;
+
+    z-index: -1;
+  }
+}
 /* ! HERO */
 .hero {
   position: relative;
@@ -342,7 +351,10 @@ nav {
 
   padding-bottom: 96px;
 
+  /** Children */
+
   .hero-info {
+    display: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;

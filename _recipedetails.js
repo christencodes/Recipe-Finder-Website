@@ -1,5 +1,27 @@
 "use strict";
 
+// NAV THINGS
+//*NAV Variables
+const navLinksDiv = document.querySelector(".nav-links");
+const navButton = document.getElementById("nav-button");
+const hamburgerContainer = document.querySelector(".hamburger-container");
+const heroImage = document.getElementById("hero-img");
+
+const dropdown = document.querySelector(".dropdown");
+// hamburger setup
+hamburgerContainer.addEventListener("click", (e) => {
+  console.log("hello");
+  dropdown.classList.toggle("hide-me");
+});
+
+window.addEventListener("resize", (e) => {
+  if (window.screen.width > 768) {
+    dropdown.classList.add("hide-me");
+  }
+});
+
+//!--------------------------------------------
+
 console.log(window.location);
 
 const params = new URLSearchParams(window.location.search);

@@ -136,7 +136,9 @@ const cardTemplate = document.querySelector(".card-template");
 // console.log(cardTemplate);
 
 function cardBuilder(recipeInfo) {
-  let url = new URL("http://127.0.0.1:5501/_recipedetails.html");
+  let url = new URL(
+    "https://christencodes.github.io/Recipe-Finder-Website/recipedetails.html",
+  );
   const recipeCardInstance = cardTemplate.content.cloneNode(true);
   //card-image
   const recipeCardImage = recipeCardInstance.querySelector(".recipe-img");
